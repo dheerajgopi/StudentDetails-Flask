@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action="" method="POST">
+        <p>
+            Enter the student ID :<br>
+            <input type="number" name="studentid" value="{{request.form.stud_id}}"></p>
+        <p><input type="submit" value="Submit"</p>
+    </form>
+{% endblock %}

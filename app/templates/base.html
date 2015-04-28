@@ -1,0 +1,23 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Student Records</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>Student Records: <a href="/">Home</a></div>
+        <hr>
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
+            {% if error %}
+                <p class="error"><strong>Error:</strong> {{ error }}
+            {% endif %}
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
