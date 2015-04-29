@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-{{ student_id }}
-{{ first_name }}
-{{ last_name }}
-{{ mark }}
+<table class="table table-striped">
+  <caption>Details</caption>
+  <thead>
+    <tr>
+      <th>STUDENT ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ student_id }}</td>
+      <td>{{ first_name }}</td>
+      <td>{{ last_name }}</td>
+      <td>{{ mark }}</td>
+    </tr>
+  </tbody>
+</table>
 {% endblock %}

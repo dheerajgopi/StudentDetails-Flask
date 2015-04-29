@@ -1,23 +1,39 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        {% if title %}
-        <title>{{ title }}</title>
-        {% else %}
-        <title>Student Records</title>
-        {% endif %}
-    </head>
-    <body>
-        <div>Student Records: <a href="/">Home</a></div>
-        <hr>
-        <div class="container">
-            {% for message in get_flashed_messages() %}
-                <div class="flash">{{ message }}</div>
-            {% endfor %}
-            {% if error %}
-                <p class="error"><strong>Error:</strong> {{ error }}
-            {% endif %}
-            {% block content %}
-            {% endblock %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Records</title>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  </head>
+  <body>
+    <h1><Student Records></h1>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Student Records</a>
+          </div>
+          <div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/add">Add</a></li>
+              <li><a href="/delete">Delete</a></li>
+            </ul>
+          </div>
         </div>
-    </body>
+      </nav>
+      {% for message in get_flashed_messages() %}
+      <div class="flash">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+      {% block content %}
+      {% endblock %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </body>
 </html>

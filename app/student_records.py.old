@@ -21,29 +21,22 @@ def connect_db() :
 def index() :
     error = None
     if request.method == 'POST' :
-        student_id = (int(request.form['studentid']),)
-        g.db = connect_db()
-        cur = g.db.execute('SELECT * FROM student WHERE id = ?', student_id)
-        details = cur.fetchone()
-        g.db.close()
-        s_id = details[0]
-        first_name = details[1]
-        last_name = details[2]
-        mark = details[3]
-        
-        return redirect(url_for('details', stud_id = s_id,
-                                            first_name = first_name,
-                                            last_name = last_name,
-                                            mark = mark))
+        student_id = request.form['studentid']
+        return redirect(url_for('details', student_id = student_id))
     return render_template('index.html', error = error)
 
 # page for showing the details of student
-@app.route('/details/<stud_id>/<first_name>/<last_name>/<mark>')
-def details(stud_id, first_name, last_name, mark) :
-    stud_id = stud_id
-    f_name = first_name
-    l_name = last_name
-    mark = mark
+@app.route('/details/<student_id>')
+def details(student_id) :
+    sid = (int(student_id),)
+    g.db = connect_db()
+    cur = g.db.execute('SELECT * FROM student WHERE id = ?', sid)
+    details = cur.fetchone()
+    g.db.close()
+    stud_id = details[0]
+    f_name = details[1]
+    l_name = details[2]
+    mark = details[3]
     return render_template('details.html', student_id = stud_id,
                                             first_name = f_name,
                                             last_name = l_name,
