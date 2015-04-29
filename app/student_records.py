@@ -6,7 +6,7 @@ import sqlite3
 
 # config
 DATABASE = 'students.db'
-
+SECRET_KEY = 'password'
 app = Flask(__name__)
 
 # pulls in configs by looking for UPPERCASE variables
@@ -21,17 +21,24 @@ def connect_db() :
 def index() :
     error = None
     if request.method == 'POST' :
+        if not request.form['studentid'] :
+            error = "Please enter a student ID"
+            return render_template('index.html')
         student_id = (int(request.form['studentid']),)
         g.db = connect_db()
         cur = g.db.execute('SELECT * FROM student WHERE id = ?', student_id)
         details = cur.fetchone()
         g.db.close()
-        s_id = details[0]
-        first_name = details[1]
-        last_name = details[2]
-        mark = details[3]
+        if not details :
+            error = "Invalid student ID"
+            return render_template('index.html', error = error)
+        else :
+            s_id = details[0]
+            first_name = details[1]
+            last_name = details[2]
+            mark = details[3]
         
-        return redirect(url_for('details', stud_id = s_id,
+            return redirect(url_for('details', stud_id = s_id,
                                             first_name = first_name,
                                             last_name = last_name,
                                             mark = mark))
