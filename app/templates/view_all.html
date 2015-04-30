@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-striped">
+  <caption>Entries</caption>
+  <thead>
+    <tr>
+      <th>Student ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Mark</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for entry in entries %}
+    <tr>
+      <td>{{entry.stud_id}}</td>
+      <td>{{entry.f_name}}</td>
+      <td>{{entry.l_name}}</td>
+      <td>{{entry.mark}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

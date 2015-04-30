@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <h3>Please login</h3>
+  <form action="" method="POST">
+      Username: <input type="text" name="username" value="{{
+      request.form.username }}">
+      Password: <input type="password" name="password" value="{{
+      request.form.password }}">
+    <p><input type="submit" value="Login">
+  </form>
+{% endblock %}

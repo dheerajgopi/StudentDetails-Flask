@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <p><a href="/logout">Logout</a></p>
+  <div class="add">
+    <h3>Add a new student:</h3>
+    <form action="{{ url_for('add') }}" method="POST" class="add">
+        <p><label><strong>Student ID:</strong></label><br/>
+        <input name="student_id" type="number" value="{{request.form.student_id}}"></p>
+        <p><label><strong>First Name:</strong></label><br/>
+        <input name="first_name" type="text" value="{{request.form.first_name}}"></p>
+        <p><label><strong>Last Name:</strong></label><br/>
+        <input name="last_name" type="text" value="{{request.form.last_name}}"></p>
+        <p><label><strong>Mark:</strong></label><br/>
+        <input name="mark" type="number" value="{{request.form.mark}}"></p>
+
+        <input class="button" type="submit" value="Save">
+    </form>
+{% endblock %}

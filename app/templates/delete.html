@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <p><a href="/logout">Logout</a></p>
+    <form action="" method="POST">
+        <p>
+            Enter the student ID :<br>
+            <input type="number" class="form-control" name="studentid" value="{{request.form.stud_id}}" style="width:100px"></p>
+        <p><input type="submit" class="btn btn-default" value="Delete"</p>
+    </form>
+{% endblock %}
